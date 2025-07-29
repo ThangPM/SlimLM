@@ -1,3 +1,4 @@
 models/SlimLM-125M-DocAssist-HF/*.bin filter=lfs diff=lfs merge=lfs -text
 models/SlimLM-125M-DocAssist-q0f16-MLC/*.bin filter=lfs diff=lfs merge=lfs -text
 models/SlimLM-125M-DocAssist-HF/pytorch_model.bin filter=lfs diff=lfs merge=lfs -text
+demo/SlimLM_Android.apk filter=lfs diff=lfs merge=lfs -text
