@@ -1,0 +1,122 @@
+{
+  "version": "0.1.0",
+  "model_type": "mpt",
+  "quantization": "q0f16",
+  "model_config": {
+    "d_model": 768,
+    "n_heads": 12,
+    "n_layers": 12,
+    "expansion_ratio": 4,
+    "context_window_size": 2048,
+    "vocab_size": 50368,
+    "resid_pdrop": 0.0,
+    "emb_pdrop": 0.0,
+    "learned_pos_emb": true,
+    "attn_config": {
+      "alibi": false,
+      "alibi_bias_max": 8,
+      "attn_impl": "torch",
+      "attn_pdrop": 0.0,
+      "attn_type": "multihead_attention",
+      "attn_uses_sequence_id": false,
+      "clip_qkv": null,
+      "qk_gn": false,
+      "qk_ln": false,
+      "rope": false,
+      "rope_dail_config": {
+        "pos_idx_in_fp32": true,
+        "type": "original",
+        "xpos_scale_base": 512
+      },
+      "rope_hf_config": {
+        "factor": 1.0,
+        "type": "no_scaling"
+      },
+      "rope_impl": "dail",
+      "rope_theta": 10000,
+      "sliding_window_size": -1,
+      "softmax_scale": null
+    },
+    "ffn_config": {
+      "fc_type": {
+        "name": "torch"
+      },
+      "ffn_type": "mptmlp"
+    },
+    "init_device": "cpu",
+    "logit_scale": null,
+    "no_bias": false,
+    "tie_word_embeddings": true,
+    "embedding_fraction": 1.0,
+    "norm_type": "low_precision_layernorm",
+    "norm_eps": 1e-05,
+    "use_cache": false,
+    "init_config": {
+      "emb_init_std": null,
+      "emb_init_uniform_lim": null,
+      "fan_mode": "fan_in",
+      "init_div_is_residual": true,
+      "init_gain": 0.0,
+      "init_nonlinearity": "relu",
+      "init_std": null,
+      "name": "kaiming_normal_"
+    },
+    "tensor_parallel_shards": 1,
+    "prefill_chunk_size": 2048,
+    "max_batch_size": 128
+  },
+  "vocab_size": 50368,
+  "context_window_size": 2048,
+  "sliding_window_size": -1,
+  "prefill_chunk_size": 2048,
+  "attention_sink_size": -1,
+  "tensor_parallel_shards": 1,
+  "pipeline_parallel_stages": 1,
+  "temperature": 1.0,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "repetition_penalty": 1.0,
+  "top_p": 1.0,
+  "tokenizer_files": [
+    "tokenizer.json",
+    "tokenizer_config.json"
+  ],
+  "tokenizer_info": {
+    "token_postproc_method": "byte_level",
+    "prepend_space_in_encode": false,
+    "strip_space_in_decode": false
+  },
+  "conv_template": {
+    "name": "mpt",
+    "system_template": "{system_message}",
+    "system_message": "You are an AI assistant for document analysis, performing summarization, question suggestion, and question answering. For each task:\n\n1. Analyze the given document\n2. Determine the task (summarization, question suggestion, or question answering)\n3. Perform the requested task\n\nRespond using this format:\n\n<intent>: [summarization|question_suggestion|question_answering]\n<response>\n[Task-specific response here]\n</response>\n\nNow, analyze the following document and respond to the request:",
+    "system_prefix_token_ids": null,
+    "add_role_after_system_message": true,
+    "roles": {
+      "user": "",
+      "assistant": ""
+    },
+    "role_templates": {
+      "user": "{user_message}",
+      "assistant": "{assistant_message}",
+      "tool": "{tool_message}"
+    },
+    "messages": [],
+    "seps": [
+      ""
+    ],
+    "role_content_sep": "",
+    "role_empty_sep": "",
+    "stop_str": [
+      "<|endoftext|>"
+    ],
+    "stop_token_ids": [
+      0
+    ],
+    "function_string": "",
+    "use_function_calling": false
+  },
+  "pad_token_id": 0,
+  "bos_token_id": 1,
+  "eos_token_id": 2
+}
