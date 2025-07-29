@@ -1,1 +1,1 @@
-# SlimLM
+# Official code for SlimLM paper
